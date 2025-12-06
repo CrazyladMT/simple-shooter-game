@@ -5,3 +5,6 @@ TODO:
 - A bigger and better map, ideally with hills, few trees, no caves, some rivers, big villages here and there, and 500x500 size
 - Random loot spawning in chests in predefined places (inside houses)
 - Add a proper licence and give credit to the creators of the mods used
+- Make guns zoom in with a crosshair while rightclick is held
+- Header, screenshot, and icon
+- Polish the game
