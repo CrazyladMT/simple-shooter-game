@@ -1,13 +1,13 @@
 Lines starting with "!" are high priority
 TODO:
 
-- GUIs to do everything
+-- GUIs to do everything
 !- Inventory
-- A bigger and better map, ideally with hills, few trees, no caves, some rivers, big villages here and there, and 500x500 size
-- Random loot spawning in chests in predefined places (inside houses)
+-- Improve the maps by adding structures
+-- Random loot spawning in chests in predefined places (inside houses)
 !- Add a proper licence and give credit to the creators of the mods used
 !- Make guns zoom in with a crosshair while rightclick is held
-- Header, screenshot, and icon
-- Polish the game
-- Rewrite the main mod from scratch with higher code standards
-- A scoring system with leaderboards
+-- Header, screenshot, and icon
+-- Polish the game
+-- Rewrite the main mod from scratch with higher code standards
+-- A scoring system with leaderboards
