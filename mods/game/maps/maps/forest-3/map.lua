@@ -1,17 +1,17 @@
 local map_data = {
-	name = "pine",
-	size_x = 111,
-	size_y = 64,
-	size_z = 107,
+	name = "forest-3",
+	size_x = 537,
+	size_y = 142,
+	size_z = 244,
 	
-	barrier_level = 60, -- <- Y level of the barrier
+	barrier_level = 138, -- <- Y level of the barrier
 	
 	spawn_x = nil,
 	spawn_y = nil,
 	spawn_z = nil,
 	
-	start_time = 30,
-
+	start_time = 60,
+	
 	scripts = {
 		on_start = "",
 		on_barrier_remove = "",

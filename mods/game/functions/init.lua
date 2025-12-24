@@ -108,16 +108,18 @@ function set_player_mode(player, mode) -- Set player mode (spectator, pre-match,
 	core.change_player_privs(player_name, privs)
 end
 
-function start_match() -- Start the match
+function start_match(map) -- Start the match
 	if match_state ~= "not_started" then
 		return
 	end
 
 	set_match_state("pre_match")
 
-	map_data = place_map(map_data.name or "forest") -- default to forest if no map is specified
+	map_data = place_map(map or "forest") -- default to forest if no map is specified
 	
-	core.chat_send_all(core.colorize("green", "Match about to start in 30 seconds!\nOpen inventory to change class!"))
+	assert(loadstring(map_data.scripts.on_start or ""))()
+	
+	core.chat_send_all(core.colorize("green", string.format("Match about to start in %d seconds!\nOpen inventory to change class!", map_data.start_time)))
 
 	for _, player in pairs(core.get_connected_players()) do
 		set_player_mode(player, "pre_match")
@@ -129,12 +131,12 @@ function start_match() -- Start the match
 	end
 
 	for i = 10, 1, -1 do -- count down from 10 to 1 (yes you are free to set me on fire for this horrible solution)
-		core.after(20 + i, function()
-			core.chat_send_all(core.colorize("green", "Match starts in " .. (11 - i) .. " seconds."))
+		core.after(map_data.start_time - 10 + i, function()
+			core.chat_send_all(core.colorize("green", string.format("Match starts in %d second%s.", (11 - i), 11 - i == 1 and "" or "s"))) -- <-- RIP readability
 		end)
 	end
 
-	core.after(30, function()
+	core.after(map_data.start_time, function()
 		set_match_state("in_progress")
 		core.chat_send_all(core.colorize("green", "Match started!"))
 	
@@ -223,6 +225,8 @@ function kill_player(player, reason) -- Handle killed/disconnected players prope
 	if #alive_player_names == 1 then
 		local winner_name = alive_player_names[1]
 		core.chat_send_all(core.colorize("green", winner_name .. " is the winner!"))
+		
+		assert(loadstring(map_data.scripts.on_end or ""))()
 
 		set_match_state("post_match")
 

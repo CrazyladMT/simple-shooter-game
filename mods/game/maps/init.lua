@@ -13,6 +13,10 @@ function place_map(map)
 		map_data.spawn_z = map_data.size_z / 2
 	end
 	
+	if map_data.start_time == nil or map_data.start_time <= 0 then
+		map_data.start_time = 30
+	end
+	
 	return map_data
 end
 
@@ -21,6 +25,7 @@ function remove_barrier(x, y, z)
 		for node_z = 1, z - 2 do
 			core.set_node({x = node_x, y = y - 1, z = node_z}, {name = "air"}) -- account for the fact that lua counts starting at 1... i think.... whatever, it works \_('_')_/
 		end
-	end	
+	end
+	assert(loadstring(map_data.scripts.on_barrier_remove or ""))()
 	return ""
 end

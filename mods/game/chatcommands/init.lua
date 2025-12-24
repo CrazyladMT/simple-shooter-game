@@ -1,9 +1,9 @@
 -- Chatcommands for SSG
 
-core.register_chatcommand("load", {
+core.register_chatcommand("start", {
 	params = "<map>",
 	privs = {match_manager = true},
-	description = "Load a map",
+	description = "Start a match on <map>",
 	func = function(_, param)
 		if not param or param == "" then
 			return false, "-!- You must specify a map name!"
@@ -12,19 +12,8 @@ core.register_chatcommand("load", {
 		if match_state == "pre_match" or match_state == "post_match" or match_state == "in_progress" then
 			return false, "-!- Match is already in progress!"
 		end
-
-		map_data = place_map(param)
-
-		return true, "-!- Map loaded!"
-	end
-})
-
-core.register_chatcommand("start", {
-	params = "",
-	privs = {match_manager = true},
-	description = "Start the match",
-	func = function()
-		start_match()
+		
+		start_match(param)
 		return true, "-!- Match started!"
 	end
 })

@@ -8,7 +8,15 @@ local map_data = {
 	
 	spawn_x = nil,
 	spawn_y = nil,
-	spawn_z = nil
+	spawn_z = nil,
+	
+	start_time = 45,
+	
+	scripts = {
+		on_start = "",
+		on_barrier_remove = "",
+		on_end = ""
+	}
 }
 
 return map_data

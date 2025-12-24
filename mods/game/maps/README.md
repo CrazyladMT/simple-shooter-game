@@ -40,7 +40,15 @@ local map_data = {
 	
 	spawn_x = nil,
 	spawn_y = nil,
-	spawn_z = nil
+	spawn_z = nil,
+	
+	start_time = (Amount of time in seconds before the barrier is removed)
+
+    scripts = {
+        on_start = "(Lua script to be run after /start is run, leave blank unless you know what you are doing!)",
+        on_barrier_remove = "(Lua script to be run after the barrier is removed, leave blank unless you know what you are doing!)",
+        on_end = "(Lua script to be run after the match has ended, leave blank unless you know what you are doing!)"
+    }
 }
 
 return map_data
