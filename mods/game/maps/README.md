@@ -42,7 +42,7 @@ local map_data = {
 	spawn_y = nil,
 	spawn_z = nil,
 	
-	start_time = (Amount of time in seconds before the barrier is removed)
+	start_time = (Amount of time in seconds before the barrier is removed),
 
     scripts = {
         on_start = "(Lua script to be run after /start is run, leave blank unless you know what you are doing!)",
