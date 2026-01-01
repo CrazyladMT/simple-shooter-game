@@ -8,7 +8,6 @@ TODO:
 -- Random loot spawning in chests in predefined places (inside houses)
 !- Add a proper licence and give credit to the creators of the mods used
 !- Make guns zoom in with a crosshair while rightclick is held
--- Header, screenshot, and icon
 -- Polish the game
 -- Rewrite the main mod from scratch with higher code standards
 -- A scoring system with leaderboards
