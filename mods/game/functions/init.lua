@@ -45,7 +45,7 @@ function set_player_mode(player, mode) -- Set player mode (spectator, pre-match,
 		})
 
 		load_player_data(player)
-		privs.noclip, privs.fast, privs.fly, privs.interact = false, false, false, true
+		privs.noclip, privs.fast, privs.fly, privs.interact, privs.debug = false, false, false, true, false
 
 		playertag.set(player, playertag.TYPE_ENTITY, {a = 255, r = 255, g = 255, b = 255})
 
@@ -62,7 +62,7 @@ function set_player_mode(player, mode) -- Set player mode (spectator, pre-match,
 			breathbar = true,
 		})		
 	elseif mode == "spectator" then
-		privs.noclip, privs.fast, privs.fly, privs.interact = true, true, true, false
+		privs.noclip, privs.fast, privs.fly, privs.interact, privs.debug = true, true, true, false, true
 
 		make_player_invisible(player)
 
