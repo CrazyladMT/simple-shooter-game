@@ -25,17 +25,17 @@ function place_map(map)
 	end
 	
 	if map_data.classes.class_1.initial_items == nil or map_data.classes.class_1.name == nil then
-		map_data.classes.class_1.initial_items = {"ctf_ranged:m200_loaded", "default:sword_stone", "ctf_ranged:ammo 100"}
+		map_data.classes.class_1.initial_items = {"ctf_ranged:m200_loaded", "default:sword_stone", "ctf_ranged:ammo 99"}
 		map_data.classes.class_1.name = "Long-range"
 	end
 
 	if map_data.classes.class_2.initial_items == nil or map_data.classes.class_2.name == nil then
-		map_data.classes.class_2.initial_items = {"ctf_ranged:ak47_loaded", "ctf_ranged:glock17_loaded", "ctf_ranged:ammo 100"}
+		map_data.classes.class_2.initial_items = {"ctf_ranged:ak47_loaded", "ctf_ranged:glock17_loaded", "ctf_ranged:ammo 99"}
 		map_data.classes.class_2.name = "Mid-range"
 	end
 
 	if map_data.classes.class_3.initial_items == nil or map_data.classes.class_3.name == nil then
-		map_data.classes.class_3.initial_items = {"ctf_ranged:benelli_loaded", "ctf_ranged:glock17_loaded", "ctf_ranged:ammo 100"}
+		map_data.classes.class_3.initial_items = {"ctf_ranged:benelli_loaded", "ctf_ranged:glock17_loaded", "ctf_ranged:ammo 99"}
 		map_data.classes.class_3.name = "Short-range"
 	end
 
