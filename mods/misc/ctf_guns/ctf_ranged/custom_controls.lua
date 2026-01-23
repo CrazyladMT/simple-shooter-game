@@ -50,7 +50,7 @@ end)
 
 minetest.register_on_joinplayer(function(player)
       player_scope_huds[player:get_player_name()] = player:hud_add({
-	    hud_elem_type = "image",
+	    type = "image",
 	    alignment = { x=0.0, y=0.0 },
 	    position = {x = 0.5, y = 0.5},
 	    scale = { x=2, y=2 },

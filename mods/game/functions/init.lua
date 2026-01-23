@@ -148,7 +148,7 @@ function start_match(map) -- Start the match
 
 		for _, player in pairs(core.get_connected_players()) do
 			local player_name = player:get_player_name()
-			inv = player:get_inventory()
+			local inv = player:get_inventory()
 
 			inv:set_list("main", {})
 
