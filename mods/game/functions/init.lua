@@ -66,7 +66,7 @@ function set_player_mode(player, mode) -- Set player mode (spectator, pre-match,
 
 		make_player_invisible(player)
 
-		core.chat_send_player(player_name, core.colorize("blue", "You are now a spectator."))
+		core.chat_send_player(player_name, core.colorize("#0574fc", "You are now a spectator."))
 
 		player:set_inventory_formspec([[
     		size[8,4]
@@ -121,7 +121,7 @@ function start_match(map) -- Start the match
 		
 	assert(loadstring(map_data.scripts.on_start or ""))()
 	
-	core.chat_send_all(core.colorize("green", string.format("Match about to start in %d seconds!\nOpen inventory to change class!", map_data.start_time)))
+	core.chat_send_all(core.colorize("#b011f9", string.format("Match about to start in %d seconds!\nOpen inventory to change class!", map_data.start_time)))
 
 	for _, player in pairs(core.get_connected_players()) do
 		set_player_mode(player, "pre_match")
