@@ -2,13 +2,12 @@ Lines starting with "!" are high priority
 TODO:
 
 !- Add namespacing (`ssg.xyz()`)
-!- Fix mapgen breaking when hosting from a dedicated server instead of the mainmenu (sometimes .-.)
+!- Fix mapgen breaking when using non-singlenode mapgens (such as on dedicated servers, a workaround is to create it on a client and transfer it to the server)
 -- GUIs to do everything
 -- Improve the maps by adding structures
 -- Random loot spawning in chests in predefined places (inside houses)
-!- Add a proper licence and give credit to the creators of the mods used
-!- Make guns zoom in with a crosshair while rightclick is held
+-- Make guns zoom in with a crosshair while rightclick is held
 -- Polish the game
--- Rewrite the main mod from scratch with higher code standards
+-- Rewrite the game from scratch with higher code standards (it's never going to happen, is it...)
 -- A scoring system with leaderboards
 -- Implement configurable teams
