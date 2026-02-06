@@ -133,6 +133,7 @@ function start_match(map) -- Start the match
 			image_scale = 100,
 			text      = "map_loading.png",
 			scale     = {x=-100, y=-100},
+			z_index = 1000,
 		})
 
 		give_player_items(player)
