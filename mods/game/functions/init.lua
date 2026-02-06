@@ -118,49 +118,71 @@ function start_match(map) -- Start the match
 	set_match_state("pre_match")
 
 	map_data = place_map(map or "forest") -- default to forest if no map is specified
-		
-	assert(loadstring(map_data.scripts.on_start or ""))()
-	
-	core.chat_send_all(core.colorize("#b011f9", string.format("Match about to start in %d seconds!\nOpen inventory to change class!", map_data.start_time)))
 
+	if map_data == "nope :(" then
+		return map_data
+	end
+	
+	local map_loading_images = {}
 	for _, player in pairs(core.get_connected_players()) do
 		set_player_mode(player, "pre_match")
+		
+		map_loading_images[player:get_player_name()] = player:hud_add({
+			type      = "image",
+			position  = {x=0.5, y=0.5},
+			image_scale = 100,
+			text      = "map_loading.png",
+			scale     = {x=-100, y=-100},
+		})
+
 		give_player_items(player)
 
 		player:set_pos({x = map_data.spawn_x, y = map_data.spawn_y, z = map_data.spawn_z})
 
 		player:set_hp(20)
 	end
-
-	for i = 10, 1, -1 do -- count down from 10 to 1 (yes you are free to set me on fire for this horrible solution)
-		core.after(map_data.start_time - 10 + i, function()
-			core.chat_send_all(core.colorize("green", string.format("Match starts in %d second%s.", 11 - i, 11 - i == 1 and "" or "s"))) -- <- RIP readability
-		end)
-	end
-
-	core.after(map_data.start_time, function()
-		set_match_state("in_progress")
-		core.chat_send_all(core.colorize("green", "Match started!"))
 	
-		remove_barrier(map_data.size_x, map_data.barrier_level, map_data.size_z)
-
-		alive_players = {}
-
+	core.after(5, function()
 		for _, player in pairs(core.get_connected_players()) do
-			local player_name = player:get_player_name()
-			local inv = player:get_inventory()
-
-			inv:set_list("main", {})
-
-			give_player_items(player)
-
-			player:set_properties({
-				pointable = true, -- allow players to be killable after the match starts
-			})
-			alive_players[player_name] = "alive"
-
-			set_player_mode(player, "normal")
+			player:set_pos({x = map_data.spawn_x, y = map_data.spawn_y, z = map_data.spawn_z})
+			player:hud_remove(map_loading_images[player:get_player_name()])
 		end
+
+	
+		assert(loadstring(map_data.scripts.on_start or ""))()
+		
+		core.chat_send_all(core.colorize("#b011f9", string.format("Match about to start in %d seconds!\nOpen inventory to change class!", map_data.start_time)))
+
+		for i = 10, 1, -1 do -- count down from 10 to 1 (yes you are free to set me on fire for this horrible solution)
+			core.after(map_data.start_time - 10 + i, function()
+				core.chat_send_all(core.colorize("green", string.format("Match starts in %d second%s.", 11 - i, 11 - i == 1 and "" or "s"))) -- <- RIP readability
+			end)
+		end
+
+		core.after(map_data.start_time, function()
+			set_match_state("in_progress")
+			core.chat_send_all(core.colorize("green", "Match started!"))
+		
+			remove_barrier(map_data.size_x, map_data.barrier_level, map_data.size_z)
+
+			alive_players = {}
+
+			for _, player in pairs(core.get_connected_players()) do
+				local player_name = player:get_player_name()
+				local inv = player:get_inventory()
+
+				inv:set_list("main", {})
+
+				give_player_items(player)
+
+				player:set_properties({
+					pointable = true, -- allow players to be killable after the match starts
+				})
+				alive_players[player_name] = "alive"
+
+				set_player_mode(player, "normal")
+			end
+		end)
 	end)
 end
 
