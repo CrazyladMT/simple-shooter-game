@@ -1,13 +1,18 @@
 -- Maps mod for SSG
 function place_map(map)
-	local map_path = core.get_modpath("maps") .. "/maps/" .. map .. "/"
+	local map_path = core.get_modpath("maps") .. "/maps/"
+	local map_list = core.get_dir_list(map_path, true)
 
-	if not core.path_exists(map_path) then
-		return "nope :("
+	for i = 1, #map_list do
+		if map_list[i] == map then
+			break
+		elseif i == #map_list then
+			return "nope :("
+		end
 	end
 
-	local map_data = dofile(map_path .. "map.lua")
-	core.place_schematic({x=0, y=0, z=0}, map_path .. "map.mts", 0, nil, true)
+	local map_data = dofile(map_path .. map .. "/map.lua")
+	core.place_schematic({x=0, y=0, z=0}, map_path .. map .. "/map.mts", 0, nil, true)
 	
 	if map_data.spawn_x == nil or map_data.spawn_y == nil or map_data.spawn_z == nil then -- set a default spawnpoint if not set
 		map_data.spawn_x = map_data.size_x / 2

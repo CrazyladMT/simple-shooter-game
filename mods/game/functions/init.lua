@@ -115,13 +115,13 @@ function start_match(map) -- Start the match
 		return
 	end
 
-	set_match_state("pre_match")
-
 	map_data = place_map(map or "forest") -- default to forest if no map is specified
 
 	if map_data == "nope :(" then
 		return map_data
 	end
+
+	set_match_state("pre_match")
 	
 	local map_loading_images = {}
 	for _, player in pairs(core.get_connected_players()) do
@@ -143,7 +143,7 @@ function start_match(map) -- Start the match
 		player:set_hp(20)
 	end
 	
-	core.after(5, function()
+	core.after(3, function()
 		for _, player in pairs(core.get_connected_players()) do
 			player:set_pos({x = map_data.spawn_x, y = map_data.spawn_y, z = map_data.spawn_z})
 			player:hud_remove(map_loading_images[player:get_player_name()])
